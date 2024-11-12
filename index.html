@@ -1,225 +1,270 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Aconteceu Integral 3 ano</title>
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'><link rel="stylesheet" href="./style.css">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidando do meu animal de estimação</title>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            font-family: 'Satisfy', cursive;
+            font-size: 50px;
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .header-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-author {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .placeholder {
+            width: 100%;
+            height: 225px; /* Altura fixa para manter proporção */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            color: #666;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 20px;
+            transition: background-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .placeholder:hover {
+            background: #e0e0e0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            width: 30px;
+            height: 30px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .close-modal:hover {
+            background: #ff2222;
+        }
+
+        .modal iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .modal-title {
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal iframe {
+                height: 400px;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<h1>Cuidando do meu animal de estimação</h1>
-<h4>Jogos criados pela turma do 3º ano A e B no componente de Educação Tecnologica </h4>
-<h4>Clique na imagem para jogar </h4>
-<hr>
+    <h1>Cuidando do meu animal de estimação</h1>
+    <div class="header-info">
+        <h4>Jogos criados pela turma do 3º ano A e B no componente de Educação Tecnológica</h4>
+        <h4>Clique nos cards para ver os projetos</h4>
+    </div>
 
-<div class="divona">
+    <div class="gallery-grid">
+        <!-- Os projetos serão inseridos aqui pelo JavaScript -->
+    </div>
 
-<br>
-<hr>
-<div id="gallery" class="container-fluid">  
-  
-  <div>
-    <p> Lorenzo</p>
-    <br>  
-    <iframe src="https://scratch.mit.edu/projects/1088273435/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  
-  <div>
-    <p> Sofia </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088270079/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h3 class="modal-title"></h3>
+            <div class="modal-body"></div>
+        </div>
+    </div>
 
-  </div>
-  
-  <div>
-    <p> Theo  </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088266219/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  
-  <div>
-    <p> Alice </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088744796/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  <div>
-    <p> Roberta </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088275128/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  <div>
-    <p> Davi </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088277597/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  <div>
-    <p> Antonio </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088280214/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  <div>
-    <p>Beatriz </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088270746/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  <div>
-    <p> Duda </p>
-    <br>
-    <iframe src="https://scratch.mit.edu/projects/1088282128/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </div>
-  
-  <div>
-    <p> Vinicius </p>
-    <br>
-  <iframe src="https://scratch.mit.edu/projects/1088260301/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+    <script>
+        const projects = [
+            { name: 'Lorenzo', id: '1088273435' },
+            { name: 'Sofia', id: '1088270079' },
+            { name: 'Theo', id: '1088266219' },
+            { name: 'Alice', id: '1088744796' },
+            { name: 'Roberta', id: '1088275128' },
+            { name: 'Davi', id: '1088277597' },
+            { name: 'Antonio', id: '1088280214' },
+            { name: 'Beatriz', id: '1088270746' },
+            { name: 'Duda', id: '1088282128' },
+            { name: 'Vinicius', id: '1088260301' },
+            { name: 'Joaquim', id: '1088281603' },
+            { name: 'Isabela', id: '1088283241' },
+            { name: 'Mateus', id: '1094800606' },
+            { name: 'Miguel', id: '1088269747' },
+            { name: 'Lucas', id: '1094803474' },
+            { name: 'Giovanna', id: '1091978250' },
+            { name: 'Bernardo', id: '1095360151' },
+            { name: 'Cecilia', id: '1094820399' },
+            { name: 'Gabriela', id: '1069097303' },
+            { name: 'Isabela', id: '1072360251' },
+            { name: 'Maria Eduarda', id: '1091974587' },
+            { name: 'Guilherme', id: '1091457537' },
+            { name: 'Antonio', id: '1088267423' },
+            { name: 'Lara', id: '1091456781' },
+            { name: 'João Pedro', id: '1091456291' },
+            { name: 'Eduardo', id: '1091455862' },
+            { name: 'João', id: '1091455573' },
+            { name: 'Mateus', id: '1091455131' },
+            { name: 'Gustavo', id: '1091454183' },
+            { name: 'Angelina', id: '1091450991' },
+            { name: 'Stela', id: '1091449076' },
+            { name: 'Maria Clara', id: '1091446093' }
+        ];
 
-<div>
-  <p> Joaquim </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1088281603/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        // Configuração do Modal
+        const modal = document.getElementById('projectModal');
+        const modalTitle = modal.querySelector('.modal-title');
+        const modalBody = modal.querySelector('.modal-body');
+        const closeButton = modal.querySelector('.close-modal');
 
-<div>
-  <p> Isabela </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1088283241/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        function openModal(project) {
+            modalTitle.textContent = `Projeto de ${project.name}`;
+            modalBody.innerHTML = `<iframe src="https://scratch.mit.edu/projects/${project.id}/embed" 
+                                         allowtransparency="true" 
+                                         frameborder="0" 
+                                         scrolling="no" 
+                                         allowfullscreen></iframe>`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Previne rolagem do body
+        }
 
-<div>
-  <p> Mateus </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1094800606/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        function closeModal() {
+            modal.style.display = 'none';
+            modalBody.innerHTML = ''; // Limpa o iframe
+            document.body.style.overflow = ''; // Restaura rolagem do body
+        }
 
-<div>
-  <p> Miguel </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1088269747/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        // Fecha o modal quando clica fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
 
-<div>
-  <p> Lucas </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1094803474/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        closeButton.addEventListener('click', closeModal);
 
-<div>
-  <p> Giovanna </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091978250/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        // Fecha o modal com a tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
 
-<div>
-  <p> Bernardo  </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1095360151/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+        function createProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            
+            const authorName = document.createElement('div');
+            authorName.className = 'project-author';
+            authorName.textContent = project.name;
+            
+            const placeholder = document.createElement('div');
+            placeholder.className = 'placeholder';
+            placeholder.innerHTML = `Clique para ver o projeto<br>feito por ${project.name}`;
+            
+            card.appendChild(authorName);
+            card.appendChild(placeholder);
 
-<div>
-  <p> Cecilia  </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1094820399/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+            // Abre o modal ao clicar no card
+            placeholder.addEventListener('click', () => openModal(project));
 
-<div>
-  <p> Gabriela  </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1069097303/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
+            return card;
+        }
 
-<div>
-  <p>  Isabela </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1072360251/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Maria Eduarda </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091974587/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Guilherme </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091457537/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Antonio </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1088267423/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Lara </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091456781/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  João Pedro </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091456291/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Eduardo </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091455862/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-
-<div>
-  <p>  João </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091455573/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Mateus </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091455131/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-
-<div>
-  <p> Gustavo  </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091454183/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p> Angelina  </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091450991/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-
-<div>
-  <p>  Stela </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091449076/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-<div>
-  <p>  Maria Clara </p>
-  <br>
-  <iframe src="https://scratch.mit.edu/projects/1091446093/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div>
-
-</div>
-</div>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script><script  src="./script.js"></script>
-
+        // Renderiza todos os projetos
+        const galleryGrid = document.querySelector('.gallery-grid');
+        projects.forEach(project => {
+            const card = createProjectCard(project);
+            galleryGrid.appendChild(card);
+        });
+    </script>
 </body>
 </html>
